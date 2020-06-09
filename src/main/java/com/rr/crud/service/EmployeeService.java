@@ -18,7 +18,7 @@ public class EmployeeService {
 	private EmployeeMapper employeeMapper;
 	
 	/*
-	 *  ²éÑ¯ËùÓĞÔ±¹¤
+	 *  æŸ¥è¯¢æ‰€æœ‰å‘˜å·¥
 	 */
 	public List<Employee> getAll() {
 
@@ -31,7 +31,7 @@ public class EmployeeService {
 	}
 
 	/*
-	 * ¼ìÑéÓÃ»§ÃûÊÇ·ñ¿ÉÓÃ
+	 * æ£€éªŒç”¨æˆ·åæ˜¯å¦å¯ç”¨
 	 */
 	public boolean checkUser(String empName) {
 		EmployeeExample ex = new EmployeeExample();
@@ -42,14 +42,14 @@ public class EmployeeService {
 	}
 
 	/*
-	 * °´Ô±¹¤Id²éÑ¯Ô±¹¤
+	 * æŒ‰å‘˜å·¥IdæŸ¥è¯¢å‘˜å·¥
 	 */
 	public Employee getEmp(Integer id) {
 		return employeeMapper.selectByPrimaryKey(id);
 	}
 
 	/*
-	 * Ô±¹¤¸üĞÂ
+	 * å‘˜å·¥æ›´æ–°
 	 */
 	public void updateEmp(Employee employee) {
 		
@@ -57,7 +57,7 @@ public class EmployeeService {
 	}
 
 	/*
-	 * Ô±¹¤É¾³ı
+	 * å‘˜å·¥åˆ é™¤
 	 */
 	public void deleteEmp(Integer id) {
 		employeeMapper.deleteByPrimaryKey(id);

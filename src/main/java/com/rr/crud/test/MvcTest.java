@@ -21,14 +21,14 @@ import com.rr.crud.bean.Employee;
 
 
 /*
- * Ê¹ÓÃspring²âÊÔÄ£¿éÌá¹©µÄ²âÊÔÇëÇó¹¦ÄÜ£¬²âÊÔcrudÇëÇóµÄÕıÈ·ĞÔ
- * Spring4²âÊÔµÄÊ±ºò£¬ĞèÒªservlet3.0Ö§³Ö
+ * ä½¿ç”¨springæµ‹è¯•æ¨¡å—æä¾›çš„æµ‹è¯•è¯·æ±‚åŠŸèƒ½ï¼Œæµ‹è¯•crudè¯·æ±‚çš„æ­£ç¡®æ€§
+ * Spring4æµ‹è¯•çš„æ—¶å€™ï¼Œéœ€è¦servlet3.0æ”¯æŒ
  */
 @ContextConfiguration(locations= {"classpath:applicationContext.xml", "classpath:springmvc.xml"})
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MvcTest {
-	// ĞéÄâmvcÇëÇó£¬»ñÈ¡µ½´¦Àí½á¹û
+	// è™šæ‹Ÿmvcè¯·æ±‚ï¼Œè·å–åˆ°å¤„ç†ç»“æœ
 	private MockMvc mockMvc;
 	@Autowired
 	private WebApplicationContext context;
@@ -41,22 +41,22 @@ public class MvcTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testPage() throws Exception {
-		// Ä£ÄâÇëÇóÄÃµ½·µ»ØÖµ
+		// æ¨¡æ‹Ÿè¯·æ±‚æ‹¿åˆ°è¿”å›å€¼
 		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/emps").param("pn", "4")).andReturn();
 		
-		// ÇëÇó³É¹¦ºó, ÇëÇóÓòÖĞ»áÓĞpageInfo, ÎÒÃÇ¿ÉÒÔÈ¡³öpageInfo½øĞĞÑéÖ¤
+		// è¯·æ±‚æˆåŠŸå, è¯·æ±‚åŸŸä¸­ä¼šæœ‰pageInfo, æˆ‘ä»¬å¯ä»¥å–å‡ºpageInfoè¿›è¡ŒéªŒè¯
 		MockHttpServletRequest request = result.getRequest();
 		PageInfo<Employee> pi = (PageInfo<Employee>) request.getAttribute("pageInfo");
-		System.out.println("µ±Ç°Ò³Âë:" + pi.getPageNum());
-		System.out.println("×ÜÒ³Âë:" + pi.getPages());
-		System.out.println("×Ü¼ÇÂ¼Êı:" + pi.getTotal());
-		System.out.println("ÔÚÒ³ÃæĞèÒªÁ¬ĞøÏÔÊ¾µÄÒ³Âë");
+		System.out.println("å½“å‰é¡µç :" + pi.getPageNum());
+		System.out.println("æ€»é¡µç :" + pi.getPages());
+		System.out.println("æ€»è®°å½•æ•°:" + pi.getTotal());
+		System.out.println("åœ¨é¡µé¢éœ€è¦è¿ç»­æ˜¾ç¤ºçš„é¡µç ");
 		int[] nums = pi.getNavigatepageNums();
 		for (int i : nums) {
 			System.out.print(i + " ");
 		}
 		
-		// »ñÈ¡Ô±¹¤Êı¾İ
+		// è·å–å‘˜å·¥æ•°æ®
 		List<Employee> lists = pi.getList();
 		for (Employee employee : lists) {
 			System.out.println(employee.getEmpId() + "----" + employee.getEmpName());

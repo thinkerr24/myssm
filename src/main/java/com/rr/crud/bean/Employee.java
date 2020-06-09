@@ -6,19 +6,19 @@ import javax.validation.constraints.Pattern;
 public class Employee {
     private Integer empId;
     @Pattern(regexp="(^[a-zA-Z0-9_-]{6,16}$)|(^[\u2E80-\u9FFF]{2,5})"
-    		, message="ÓÃ»§Ãû±ØĞëÊÇ2-5Î»ÖĞÎÄ»òÕßÊÇ6-16Î»Ó¢ÎÄºÍÊı×ÖµÄ×éºÏ")
+    		, message="ç”¨æˆ·åå¿…é¡»æ˜¯2-5ä½ä¸­æ–‡æˆ–è€…æ˜¯6-16ä½è‹±æ–‡å’Œæ•°å­—çš„ç»„åˆ")
     private String empName;
 
     private String gender;
 
     // @Email or
     @Pattern(regexp="^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$"
-    		, message="ÓÊÏä¸ñÊ½²»ÕıÈ·")
+    		, message="é‚®ç®±æ ¼å¼ä¸æ­£ç¡®")
     private String email;
 
     private Integer dId;
     
-    // Ï£Íû²éÑ¯Ô±¹¤µÄÍ¬Ê±²¿ÃÅĞÅÏ¢Ò²ÊÇ²éÑ¯ºÃµÄ
+    // å¸Œæœ›æŸ¥è¯¢å‘˜å·¥çš„åŒæ—¶éƒ¨é—¨ä¿¡æ¯ä¹Ÿæ˜¯æŸ¥è¯¢å¥½çš„
     private Department department;
     
     public Employee() {

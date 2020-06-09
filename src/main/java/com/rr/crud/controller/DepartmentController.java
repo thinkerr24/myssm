@@ -12,7 +12,7 @@ import com.rr.crud.bean.Msg;
 import com.rr.crud.service.DepartmentService;
 
 /*
- * ´¦ÀíºÍ²¿ÃÅÓĞ¹ØµÄÇëÇó
+ * å¤„ç†å’Œéƒ¨é—¨æœ‰å…³çš„è¯·æ±‚
  */
 @Controller
 public class DepartmentController {
@@ -20,12 +20,12 @@ public class DepartmentController {
 	private DepartmentService departmentService;
 
 	/**
-	 * ·µ»ØËùÓĞµÄ²¿ÃÅĞÅÏ¢
+	 * è¿”å›æ‰€æœ‰çš„éƒ¨é—¨ä¿¡æ¯
 	 */
 	@RequestMapping("/depts")
 	@ResponseBody
 	public Msg getDepts() {
-		// ²é³öµÄËùÓĞ²¿ÃÅĞÅÏ¢
+		// æŸ¥å‡ºçš„æ‰€æœ‰éƒ¨é—¨ä¿¡æ¯
 		List<Department> list = departmentService.getDepts();
 		return Msg.success().add("depts", list);
 	}

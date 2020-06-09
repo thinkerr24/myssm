@@ -25,7 +25,7 @@ import com.rr.crud.bean.Msg;
 import com.rr.crud.service.EmployeeService;
 
 /*
- * ´¦ÀíÔ±¹¤CRUDÇëÇó
+ * å¤„ç†å‘˜å·¥CRUDè¯·æ±‚
  */
 @Controller
 public class EmployeeController {
@@ -34,9 +34,9 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	/*
-	 * ¸ù¾İidÉ¾³ıµ¥Ò»(ÅúÁ¿)Ô±¹¤
-	 * ÅúÁ¿É¾³ı:1-2-3
-	 * µ¥Ò»É¾³ı:1
+	 * æ ¹æ®idåˆ é™¤å•ä¸€(æ‰¹é‡)å‘˜å·¥
+	 * æ‰¹é‡åˆ é™¤:1-2-3
+	 * å•ä¸€åˆ é™¤:1
 	 */
 	@ResponseBody
 	@RequestMapping(value="/emp/{id}", method=RequestMethod.DELETE)
@@ -44,7 +44,7 @@ public class EmployeeController {
 		if (ids.contains("-")) {
 			List<Integer> del_ids = new ArrayList<>();
 			String[] str_ids = ids.split("-");
-			// ×é×°id¼¯ºÏ
+			// ç»„è£…idé›†åˆ
 			for (String string : str_ids) {
 				del_ids.add(Integer.parseInt(string));
 			}
@@ -57,21 +57,21 @@ public class EmployeeController {
 	}
 	
 	/*
-	 * ĞŞ¸ÄÔ±¹¤ĞÅÏ¢(/emp/{empId}ºÍempId×Ö¶ÎÒ»ÖÂ)
-	 * Èç¹ûÖ±½Ó·¢ajax type=PUTÇëÇó£¬employeeÖĞÖ»ÓĞempIdÓĞÖµ£¬ÆäËü×Ö¶ÎÈ«Îªnull
-	 * ÎÊÌâ:
-	 * ÇëÇóÌåÖĞÓĞÊı¾İ£¬µ«ÊÇEmployee¶ÔÏó·â×°²»ÉÏ
+	 * ä¿®æ”¹å‘˜å·¥ä¿¡æ¯(/emp/{empId}å’ŒempIdå­—æ®µä¸€è‡´)
+	 * å¦‚æœç›´æ¥å‘ajax type=PUTè¯·æ±‚ï¼Œemployeeä¸­åªæœ‰empIdæœ‰å€¼ï¼Œå…¶å®ƒå­—æ®µå…¨ä¸ºnull
+	 * é—®é¢˜:
+	 * è¯·æ±‚ä½“ä¸­æœ‰æ•°æ®ï¼Œä½†æ˜¯Employeeå¯¹è±¡å°è£…ä¸ä¸Š
 	 * update emp_tb where emp_id = xxx
-	 * Ô­Òò:
-	 * Tomcat½«ÇëÇóÖĞµÄÊı¾İ£¬·â×°³ÉÒ»¸ömap¡£
-	 * request.getParameter("xxx")¾Í´ÓmapÖĞÈ¡Öµ
-	 * ¶øspringmvc·â×°pojo¶ÔÏóµÄÊ±ºò£¬»á°ÑPOJOÖĞÃ¿¸öÊôĞÔµÄÖµÍ¨¹ı´Ë·½·¨»ñÈ¡
-	 * Ajax·¢ËÍputÇëÇóÒı·¢µÄÑª°¸£º
-	 * 		PUTÇëÇó£¬ ÇëÇóÌåÖĞµÄÊı¾İ£¬Í¨¹ırequest.getParameter("xxx")ÄÃ²»µ½
-	   ÎÒÃÇÒªÄÜÖ§³ÖÖ±½Ó·¢ËÍPUTÖ®ÀàµÄÇëÇó»¹Òª·â×°ÇëÇóÌåÖĞµÄÊı¾İ
-	  ·½·¨:ÔÚweb.xmlÅäÖÃspringMVCÌá¹©µÄHttpPutFormContentFilter¹ıÂËÆ÷
-	  Ëü½«ÇëÇóÌåÖĞµÄÊı¾İ½âÎö°ü×°³ÉÒ»¸ömap, request±»ÖØĞÂ°ü×°£¬request.getParameter()·½·¨±»
-	  ÖØĞ´, putÇëÇó·½·¨¾Íµ÷ÓÃ×Ô¼ºµÄmap
+	 * åŸå› :
+	 * Tomcatå°†è¯·æ±‚ä¸­çš„æ•°æ®ï¼Œå°è£…æˆä¸€ä¸ªmapã€‚
+	 * request.getParameter("xxx")å°±ä»mapä¸­å–å€¼
+	 * è€Œspringmvcå°è£…pojoå¯¹è±¡çš„æ—¶å€™ï¼Œä¼šæŠŠPOJOä¸­æ¯ä¸ªå±æ€§çš„å€¼é€šè¿‡æ­¤æ–¹æ³•è·å–
+	 * Ajaxå‘é€putè¯·æ±‚å¼•å‘çš„è¡€æ¡ˆï¼š
+	 * 		PUTè¯·æ±‚ï¼Œ è¯·æ±‚ä½“ä¸­çš„æ•°æ®ï¼Œé€šè¿‡request.getParameter("xxx")æ‹¿ä¸åˆ°
+	   æˆ‘ä»¬è¦èƒ½æ”¯æŒç›´æ¥å‘é€PUTä¹‹ç±»çš„è¯·æ±‚è¿˜è¦å°è£…è¯·æ±‚ä½“ä¸­çš„æ•°æ®
+	  æ–¹æ³•:åœ¨web.xmlé…ç½®springMVCæä¾›çš„HttpPutFormContentFilterè¿‡æ»¤å™¨
+	  å®ƒå°†è¯·æ±‚ä½“ä¸­çš„æ•°æ®è§£æåŒ…è£…æˆä¸€ä¸ªmap, requestè¢«é‡æ–°åŒ…è£…ï¼Œrequest.getParameter()æ–¹æ³•è¢«
+	  é‡å†™, putè¯·æ±‚æ–¹æ³•å°±è°ƒç”¨è‡ªå·±çš„map
 	 */
 	@ResponseBody
 	@RequestMapping(value="/emp/{empId}", method=RequestMethod.PUT)
@@ -80,7 +80,7 @@ public class EmployeeController {
 		return Msg.success();
 	}
 	/*
-	 * ¸ù¾İid²éÑ¯Ô±¹¤
+	 * æ ¹æ®idæŸ¥è¯¢å‘˜å·¥
 	 */
 	@RequestMapping(value="/emp/{id}", method=RequestMethod.GET)
 	@ResponseBody
@@ -90,25 +90,25 @@ public class EmployeeController {
 	}
 	
 	/*
-	 * ¼ì²éÓÃ»§ÃûÊÇ·ñ¿ÉÓÃ
+	 * æ£€æŸ¥ç”¨æˆ·åæ˜¯å¦å¯ç”¨
 	 */
 	@ResponseBody
 	@RequestMapping("/checkuser")
 	public Msg checkuser(@RequestParam("empName")String empName) {
 		String regx = "(^[a-zA-Z0-9_-]{6,16}$)|(^[\u2E80-\u9FFF]{2,5})";
 		if (!empName.matches(regx)) {
-			return Msg.failure().add("va_msg", "ÓÃ»§Ãû±ØĞëÊÇ2-5Î»ÖĞÎÄ»òÕßÊÇ6-16Î»Ó¢ÎÄºÍÊı×ÖµÄ×éºÏ");
+			return Msg.failure().add("va_msg", "ç”¨æˆ·åå¿…é¡»æ˜¯2-5ä½ä¸­æ–‡æˆ–è€…æ˜¯6-16ä½è‹±æ–‡å’Œæ•°å­—çš„ç»„åˆ");
 		}
-		// Êı¾İ¿âÓÃ»§ÃûÖØ¸´Ğ£Ñé
+		// æ•°æ®åº“ç”¨æˆ·åé‡å¤æ ¡éªŒ
 		boolean check = employeeService.checkUser(empName);
-		return check?Msg.success():Msg.failure().add("va_msg", "ÓÃ»§Ãû²»¿ÉÓÃ");
+		return check?Msg.success():Msg.failure().add("va_msg", "ç”¨æˆ·åä¸å¯ç”¨");
 	}
 	/** 
-	 * ±£´æÔ±¹¤
-	 * 1.Ö§³ÖJSR303Ğ£Ñé
-	 * 2.µ¼ÈëHibernate-Validator
-	 * 3.ÔÚbeanÉÏ¼ÓPattern×¢½â
-	 * 4.ÔÚcontroller²ã·½·¨µÄ²ÎÊıÁĞ±íÖĞ¼ÓÈë@Valid
+	 * ä¿å­˜å‘˜å·¥
+	 * 1.æ”¯æŒJSR303æ ¡éªŒ
+	 * 2.å¯¼å…¥Hibernate-Validator
+	 * 3.åœ¨beanä¸ŠåŠ Patternæ³¨è§£
+	 * 4.åœ¨controllerå±‚æ–¹æ³•çš„å‚æ•°åˆ—è¡¨ä¸­åŠ å…¥@Valid
 	 */
 	@RequestMapping(value="/emp", method=RequestMethod.POST)
 	@ResponseBody
@@ -118,11 +118,11 @@ public class EmployeeController {
 			return Msg.success();
 		} else {
 			Map<String, String > map = new HashMap<>();
-			// ¼ìÑéÊ§°Ü, ·µ»ØÊ§°Ü, ÔÚÄ£Ì¬¿òÖĞÏÔÊ¾Ğ£ÑéÊ§°ÜµÄ´íÎóĞÅÏ¢
+			// æ£€éªŒå¤±è´¥, è¿”å›å¤±è´¥, åœ¨æ¨¡æ€æ¡†ä¸­æ˜¾ç¤ºæ ¡éªŒå¤±è´¥çš„é”™è¯¯ä¿¡æ¯
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError fieldError : errors) {
-				//System.out.println("´íÎóµÄ×Ö¶ÎÃû:"+fieldError.getField());
-				//System.out.println("´íÎóµÄĞÅÏ¢:"+fieldError.getDefaultMessage());
+				//System.out.println("é”™è¯¯çš„å­—æ®µå:"+fieldError.getField());
+				//System.out.println("é”™è¯¯çš„ä¿¡æ¯:"+fieldError.getDefaultMessage());
 				map.put(fieldError.getField(), fieldError.getDefaultMessage());
 			}
 			return Msg.failure().add("errorFields", map);
@@ -130,7 +130,7 @@ public class EmployeeController {
 		
 	}
 	/*
-	 * µ¼Èëjackson°ü
+	 * å¯¼å…¥jacksonåŒ…
 	 */
 	@RequestMapping("/emps")
 	@ResponseBody
@@ -141,18 +141,18 @@ public class EmployeeController {
 		return Msg.success().add("pageInfo", page);
 	}
 	/*
-	 * v1 ²éÑ¯Ô±¹¤Êı¾İ(·ÖÒ³²éÑ¯)
-	   v2¸Ä³ÉÒÔjson×Ö·û´®µÄ·½Ê½·µ»Ø(¼û·½·¨getEmpsWithJson)
+	 * v1 æŸ¥è¯¢å‘˜å·¥æ•°æ®(åˆ†é¡µæŸ¥è¯¢)
+	   v2æ”¹æˆä»¥jsonå­—ç¬¦ä¸²çš„æ–¹å¼è¿”å›(è§æ–¹æ³•getEmpsWithJson)
 	@RequestMapping("/emps")*/
 	public String getEmps(@RequestParam(value="pn", defaultValue="1")Integer pn, Model model) {
-		// Õâ²»ÊÇÒ»¸ö·ÖÒ³²éÑ¯£¬ÒıÈëPageHelper·ÖÒ³²å¼ş
+		// è¿™ä¸æ˜¯ä¸€ä¸ªåˆ†é¡µæŸ¥è¯¢ï¼Œå¼•å…¥PageHelperåˆ†é¡µæ’ä»¶
 		
-		// ÔÚ²éÑ¯Ö®Ç°Ö»Ğèµ÷ÓÃ(´«ÈëÒ³ÂëÒÑ¾­Ã¿Ò³´óĞ¡)
+		// åœ¨æŸ¥è¯¢ä¹‹å‰åªéœ€è°ƒç”¨(ä¼ å…¥é¡µç å·²ç»æ¯é¡µå¤§å°)
 		PageHelper.startPage(pn, 5);
-		// startPageºóÃæ½ô¸úµÄÕâ¸ö²éÑ¯¾ÍÊÇÒ»¸ö·ÖÒ³²éÑ¯
+		// startPageåé¢ç´§è·Ÿçš„è¿™ä¸ªæŸ¥è¯¢å°±æ˜¯ä¸€ä¸ªåˆ†é¡µæŸ¥è¯¢
 		List<Employee> emps =  employeeService.getAll();
-		// Ê¹ÓÃPageInfo·â×°·ÖÒ³ºÃµÄÊı¾İ, Ö»Ğè½«pageinfo½»¸øÒ³Ãæ¼´¿É
-		// PageInfo¹¹ÔìÆ÷µÚ¶ş¸ö²ÎÊı±íÊ¾Á¬ĞøÏÔÊ¾µÄÒ³Êı< 1 2 3 4 5 > < 3 4 5 6 7 >
+		// ä½¿ç”¨PageInfoå°è£…åˆ†é¡µå¥½çš„æ•°æ®, åªéœ€å°†pageinfoäº¤ç»™é¡µé¢å³å¯
+		// PageInfoæ„é€ å™¨ç¬¬äºŒä¸ªå‚æ•°è¡¨ç¤ºè¿ç»­æ˜¾ç¤ºçš„é¡µæ•°< 1 2 3 4 5 > < 3 4 5 6 7 >
 		PageInfo<Employee>  page = new PageInfo<>(emps, 5);
 		model.addAttribute("pageInfo", page);
 		return "list";

@@ -14,48 +14,52 @@ import com.rr.crud.bean.Employee;
 import com.rr.crud.dao.DepartmentMapper;
 import com.rr.crud.dao.EmployeeMapper;
 
-
-
 /*
- *  ²âÊÔdao²ã¹¤×÷
- *  Ê¹ÓÃspring²âÊÔ×¢½âÀ´½øĞĞ²âÊÔ
- *  1.mavenµ¼Èëspring testÒÀÀµ
- *  2.ContextConfiguration×¢½â
- *  3.Ö±½ÓAutowiredÒªÊ¹ÓÃµÄ×¢½â¼´¿É
+ *  æµ‹è¯•daoå±‚å·¥ä½œ
+ *  ä½¿ç”¨springæµ‹è¯•æ³¨è§£æ¥è¿›è¡Œæµ‹è¯•
+ *  1.mavenå¯¼å…¥spring testä¾èµ–
+ *  2.ContextConfigurationæ³¨è§£
+ *  3.ç›´æ¥Autowiredè¦ä½¿ç”¨çš„æ³¨è§£å³å¯
  */
-@ContextConfiguration(locations= {"classpath:applicationContext.xml"})
+@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MapperTest {
 	/*
-	 *  ²âÊÔDepartmentMapper
+	 * æµ‹è¯•DepartmentMapper
 	 */
 	@Autowired
 	DepartmentMapper deparMapper;
-	@Autowired 	
+	@Autowired
 	EmployeeMapper employMapper;
 	@Autowired
 	SqlSession sqlSession;
-	
+
 	@Test
 	public void testCRUD() {
-		/* 1.´´½¨SpringIOCÈİÆ÷
-		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 2.´ÓÈİÆ÷ÖĞÈ¡mapper
-		DepartmentMapper bean = ac.getBean(DepartmentMapper.class);*/
-		System.out.println(deparMapper);
-		
-		// 1.²åÈë¼¸¸ö²¿ÃÅ
-		/*deparMapper.insertSelective(new Department(null, "¿ª·¢²¿"));
-		deparMapper.insertSelective(new Department(null, "²âÊÔ²¿"));*/
-		
-		// 2.Éú³ÉÔ±¹¤Êı¾İ£¬²âÊÔÔ±¹¤²åÈë
-		//employMapper.insertSelective(new Employee(null, "Tom", "M", "Tom@qq.com", 1));
-		// 3.ÅúÁ¿²åÈë¶à¸öÔ±¹¤
-		EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-		for(int i = 0;i<100;i++){
-			String uid = UUID.randomUUID().toString().substring(0,5)+i;
-			mapper.insertSelective(new Employee(null,uid, "M", uid+"@126.com", 1));
+		/*
+		 * 1.åˆ›å»ºSpringIOCå®¹å™¨ ApplicationContext ac = new
+		 * ClassPathXmlApplicationContext("applicationContext.xml"); // 2.ä»å®¹å™¨ä¸­å–mapper
+		 * DepartmentMapper bean = ac.getBean(DepartmentMapper.class);
+		 */
+		// System.out.println(deparMapper);
+
+		// 1.æ’å…¥å‡ ä¸ªéƒ¨é—¨
+		/*
+		 * deparMapper.insertSelective(new Department(null, "å¼€å‘éƒ¨"));
+		 * deparMapper.insertSelective(new Department(null, "æµ‹è¯•éƒ¨"));
+		 */
+
+		// 2.ç”Ÿæˆå‘˜å·¥æ•°æ®ï¼Œæµ‹è¯•å‘˜å·¥æ’å…¥
+		// employMapper.insertSelective(new Employee(null, "Tom", "M", "Tom@qq.com",
+		// 1));
+		// 3.æ‰¹é‡æ’å…¥å¤šä¸ªå‘˜å·¥
+
+		//EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+		for (int i = 0; i < 100; i++) {
+			String uid = UUID.randomUUID().toString().substring(0, 5) + i;
+			employMapper.insertSelective(new Employee(null, uid, "M", uid + "@126.com", 1));
 		}
-		System.out.println("ÅúÁ¿Íê³É");
+		System.out.println("æ‰¹é‡å®Œæˆ");
+
 	}
 }

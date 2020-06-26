@@ -11,8 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.rr.crud.bean.Department;
 import com.rr.crud.bean.Employee;
+import com.rr.crud.bean.User;
 import com.rr.crud.dao.DepartmentMapper;
 import com.rr.crud.dao.EmployeeMapper;
+import com.rr.crud.dao.UserMapper;
 
 /*
  *  测试dao层工作
@@ -61,5 +63,15 @@ public class MapperTest {
 		}
 		System.out.println("批量完成");
 
+	}
+	
+	// 测试UserMapper
+	@Autowired
+	private UserMapper userMapper;
+	
+	@Test
+	public void testUserMapper() {
+		User user = userMapper.selectUserByNameAndPassword("admin", "admin");
+		System.out.println(user);
 	}
 }

@@ -25,3 +25,14 @@ CREATE TABLE `tb_emp` (
   KEY `FK_tb_emp` (`d_id`),
   CONSTRAINT `FK_tb_emp` FOREIGN KEY (`d_id`) REFERENCES `tb_dept` (`dept_id`)
 ) ENGINE=INNODB  CHARSET=utf8;
+
+
+
+DROP TABLE IF EXISTS `tb_user`;
+CREATE TABLE `tb_user` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+insert  into `tb_user`(`id`,`username`,`password`) values (1,'admin','admin');

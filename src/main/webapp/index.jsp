@@ -133,8 +133,12 @@
 		<!-- 新增删除按钮 -->
 		<div class="row">
 			<div class="col-md-4 col-md-offset-8">
+			<c:if test="${sessionScope.currentUser== null}">
 				<a href="${pageContext.request.contextPath}/login">登录</a> &nbsp;&nbsp;&nbsp;
-				<c:if test="${cookie['currentUser'] != null}">
+			</c:if>
+				<%-- <c:if test="${cookie['currentUser'] != null}"> --%>
+				<c:if test="${sessionScope.currentUser!= null}">
+							<a href="${pageContext.request.contextPath}/logout">${sessionScope.currentUser.username}</a>
 							<button class="btn btn-primary" id="emp_add_modal_btn">新增</button> &nbsp;&nbsp;&nbsp;
 							<button class="btn btn-danger" id="emp_delete_all_btn">删除</button> 
 				</c:if>

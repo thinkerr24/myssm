@@ -1,6 +1,8 @@
 package com.rr.crud.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,12 +26,17 @@ public class UserController {
 	}
 	
 	// 接受来自登录页表单的数据
+	// 添加cookie保存登录信息
 	@PostMapping("/login")
-	public String login(HttpServletRequest req) {
+	public String login(HttpServletRequest req, HttpServletResponse res) {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		User user = userService.findUserByNameAndPassword(username, password);
 		if (user != null) {
+			Cookie cookie = new Cookie("currentUser", user.getUsername());
+			cookie.setMaxAge(5 * 60);  // 设置存在时间为5分钟
+			cookie.setPath("/"); // 设置作用域
+			res.addCookie(cookie); // 将cookie添加到response的cookie数组中返回给客户端
 			return "redirect:/";
 		} else {
 			return "login";

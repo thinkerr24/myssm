@@ -134,8 +134,10 @@
 		<div class="row">
 			<div class="col-md-4 col-md-offset-8">
 				<a href="${pageContext.request.contextPath}/login">登录</a> &nbsp;&nbsp;&nbsp;
-				<button class="btn btn-primary" id="emp_add_modal_btn">新增</button> &nbsp;&nbsp;&nbsp;
-				<button class="btn btn-danger" id="emp_delete_all_btn">删除</button> 
+				<c:if test="${cookie['currentUser'] != null}">
+							<button class="btn btn-primary" id="emp_add_modal_btn">新增</button> &nbsp;&nbsp;&nbsp;
+							<button class="btn btn-danger" id="emp_delete_all_btn">删除</button> 
+				</c:if>
 			</div>
 		</div>
 		<div class="row">
